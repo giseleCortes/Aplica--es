@@ -1,14 +1,15 @@
 import { Avatar, Divider, Drawer, useTheme, List, ListItemButton, ListItemIcon, ListItemText, Icon, useMediaQuery } from "@mui/material"
 import { Box } from '@mui/system'
-import { useDrawerContext } from "../../contexts";
+import { useAppThemeContext, useDrawerContext } from "../../contexts";
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
+import Brightness4TwoToneIcon from '@mui/icons-material/Brightness4TwoTone';
 
 interface IListItemLinkProps {
     to: string;
     icon: string;
     label: string;
     onClick: (() => void) | undefined
-};
+}
 const ListItemLink: React.FC<IListItemLinkProps> = ({ to, icon, label, onClick }) => {
     const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({ children 
     const theme = useTheme();
     const smDown = useMediaQuery(theme.breakpoints.down('sm'));
     const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
+    const { toggleTheme } = useAppThemeContext();
 
 
 
@@ -64,6 +66,16 @@ export const MenuLateral: React.FC<{ children: React.ReactNode }> = ({ children 
                                 />
                             ))}
                         </List>
+
+                    </Box>
+
+                    <Box>
+                        <ListItemButton onClick={toggleTheme}>
+                            <ListItemIcon>
+                            <Brightness4TwoToneIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary='Alternar tema' />
+                        </ListItemButton>
 
                     </Box>
                 </Box>
