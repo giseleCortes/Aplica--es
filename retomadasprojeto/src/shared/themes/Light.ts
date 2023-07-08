@@ -26,7 +26,7 @@ export const LightTheme = createTheme({
     },
          typography:{
             allVariants:{
-                color: 'darkslategray',
+                color: 'black',
             }
 
         }
