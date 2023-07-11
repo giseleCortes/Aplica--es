@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useState } from 'react';
 
 
 interface IDrawerOption{
@@ -16,32 +16,32 @@ interface IDrawerContextData {
 
 const DrawerContext = createContext({} as IDrawerContextData);
 
-// eslint-disable-next-line react-refresh/only-export-components
+
 export const useDrawerContext = () => {
-    return useContext(DrawerContext);
-}
+	return useContext(DrawerContext);
+};
 
 export const DrawerProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [drawerOptions, setIsDrawerOpitions] = useState<IDrawerOption[]>([]);
+	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+	const [drawerOptions, setIsDrawerOpitions] = useState<IDrawerOption[]>([]);
 
 
-    const toggleDrawerOpen = useCallback(() => {
-        setIsDrawerOpen(oldDraweOpen => !oldDraweOpen);
-    }, [])
+	const toggleDrawerOpen = useCallback(() => {
+		setIsDrawerOpen(oldDraweOpen => !oldDraweOpen);
+	}, []);
 
-    const hadleSetDrawerOptions = useCallback((newDrawerOptions : IDrawerOption[] ) => {
-        setIsDrawerOpitions(newDrawerOptions);
-    }, [])
+	const hadleSetDrawerOptions = useCallback((newDrawerOptions : IDrawerOption[] ) => {
+		setIsDrawerOpitions(newDrawerOptions);
+	}, []);
 
 
 
-    return (
-        <DrawerContext.Provider value={{ isDrawerOpen, drawerOptions, setIsDrawerOpitions:hadleSetDrawerOptions, toggleDrawerOpen }}>
+	return (
+		<DrawerContext.Provider value={{ isDrawerOpen, drawerOptions, setIsDrawerOpitions:hadleSetDrawerOptions, toggleDrawerOpen }}>
 
-            {children}
+			{children}
 
-        </DrawerContext.Provider>
-    );
-}
+		</DrawerContext.Provider>
+	);
+};
 
