@@ -15,6 +15,8 @@ export const AppRoutes = () => {
             path: '/página-inicial',
         },
     ]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
     return (
 
